@@ -1,90 +1,59 @@
-# Custom-Crops 🌱
+# CustomCrops
 
-![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/Xiao-MoMi/Custom-Crops)
-<a href="https://mo-mi.gitbook.io/xiaomomi-plugins/plugin-wiki/customcrops" alt="GitBook">
-<img src="https://img.shields.io/badge/docs-gitbook-brightgreen" alt="Gitbook"/>
-</a>
-[![Scc Count Badge](https://sloc.xyz/github/Xiao-MoMi/Custom-Crops/?category=codes)](https://github.com/Xiao-MoMi/Custom-Crops/)
-![Code Size](https://img.shields.io/github/languages/code-size/Xiao-MoMi/Custom-Crops)
-![bStats Servers](https://img.shields.io/bstats/servers/16593)
-![bStats Players](https://img.shields.io/bstats/players/16593)
-![GitHub](https://img.shields.io/github/license/Xiao-MoMi/Custom-Crops)
+CustomCrops is a configurable crop and farming plugin for modern Minecraft servers. It supports custom crops, pots, sprinklers, watering cans, fertilizers, seasons, greenhouse mechanics, and extensible block and item integrations.
 
-## 📌 Overview
+This repository is a maintained fork focused on the current server stack.
 
-CustomCrops is a high-performance **Paper plugin** designed to enhance the **planting experience** on Minecraft servers. It focuses on **customization** and **efficiency**, utilizing advanced techniques for optimal performance. 🌾
+## Compatibility
 
-### 🔥 Key Features
+| Component | Supported version |
+| --- | --- |
+| Minecraft | 26.3 |
+| Java | 25 |
+| Paper API | 26.3 |
+| Folia / Lophine | Supported |
+| CraftEngine | 26.9.2-SNAPSHOT |
+| CustomFishing | 2.3.26 |
 
-- **Zstd Compression**: Efficient data serialization comparable to Minecraft's native methods.
-- **⚡ Multi-threaded Tick System**: Improves server performance by distributing tasks across multiple threads.
-- **🛠️ Comprehensive API**: Enables developers to create custom block mechanisms with specific interactions and behaviors.
+CraftEngine is optional, but this version targets its current API and no longer includes the legacy CraftEngine 0.0.x adapter. Other supported item, season, protection, quest, entity, and world-management integrations remain optional.
 
----
-## 🔧 Building the Project
+The versions above were tested together on Lophine 26.3 with its Folia region scheduler enabled.
 
-### 💻 Command Line
+## Features
 
-1. Install **JDK 17 & 21**.
-2. Open a terminal and navigate to the project directory.
-3. Run:
-   ```sh
-   ./gradlew build
-   ```
-4. The generated artifact can be found in the `/target` folder.
+- Custom crops with configurable growth conditions and seasonal behavior
+- Pots, sprinklers, watering cans, fertilizers, scarecrows, and greenhouses
+- Persistent world and crop data with compressed storage
+- Custom item and furniture support through CraftEngine and other integrations
+- Extensible API for custom blocks, items, actions, and requirements
+- Folia-compatible scheduling
 
-### 🛠️ Using an IDE
+## Building
 
-1. Import the project into your preferred IDE.
-2. Execute the **Gradle build** action.
-3. Locate the artifact in the **/target** folder.
+Install JDK 25, then run:
 
----
-## 🤝 Contributing
-
-### 🌍 Translations
-
-1. Clone the repository.
-2. Create a new language file in:
-   ```
-   /plugin/src/main/resources/translations
-   ```
-3. Submit a **pull request** with your changes for review. We appreciate your contributions! 💖
-
-### 🚀 Areas for Improvement
-
-- Enhance **thread scheduler efficiency** and reduce `ConcurrentHashMap` usage.
-- Optimize **map storage** in sections using a **palette system**.
-- Replace the current **sponge flow-nbt** library with a more efficient alternative (e.g., `sparrow-nbt`).
-- Implement an improved **region file format** with file headers and sectors for **random read/write operations** (**4.0 milestone**).
-
----
-## 💖 Support the Developer
-
-If you enjoy using **CustomCrops**, consider supporting the developer! 🥰
-
-- [Polymart](https://polymart.org/resource/customcrops.2625/)
-- [BuiltByBit](https://builtbybit.com/resources/customcrops.36363/)
-- [Afdian](https://afdian.com/@xiaomomi/)
-
----
-## 📚 CustomCrops API
-
-### 📌 Repository
-```kotlin
-repositories {
-    maven("https://repo.momirealms.net/releases/")
-}
+```shell
+./gradlew clean build
 ```
 
-### 📌 Dependency
+On Windows:
+
+```powershell
+.\gradlew.bat clean build
+```
+
+The plugin JAR is generated in `target/`.
+
+## Development API
+
+The API module uses the following coordinates:
+
 ```kotlin
 dependencies {
-    compileOnly("net.momirealms:custom-crops:3.6.40")
+    compileOnly("net.momirealms:custom-crops:3.6.57")
 }
 ```
 
----
-## 🎉 Fun Fact
+## Credits and license
 
-I misspelled "mechanism" as "mechanic"—I should have caught that earlier! 😆
+CustomCrops was originally created by XiaoMoMi. This maintained fork is distributed under the [GNU General Public License v3.0](LICENSE).

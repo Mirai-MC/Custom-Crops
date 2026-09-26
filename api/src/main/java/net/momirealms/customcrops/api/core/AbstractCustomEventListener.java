@@ -93,7 +93,7 @@ public abstract class AbstractCustomEventListener implements Listener {
             this.explosionIndicator = new ExplosionIndicator.AlwaysTrue();
         } else {
             try {
-                Class<?> clazz = Class.forName("net.momirealms.customcrops.bukkit.j21.ModernExplosionIndicator");
+                Class<?> clazz = Class.forName("net.momirealms.customcrops.bukkit.j25.ModernExplosionIndicator");
                 Constructor<?> constructor = clazz.getConstructor();
                 this.explosionIndicator = (ExplosionIndicator) constructor.newInstance();
             } catch (ReflectiveOperationException e) {

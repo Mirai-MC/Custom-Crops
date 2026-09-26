@@ -1,7 +1,7 @@
 rootProject.name = "CustomCrops"
 include(":api")
 include(":plugin")
-include(":plugin:j21")
+include(":plugin:j25")
 include(":compatibility")
 include(":compatibility-asp-r1")
 include(":compatibility-asp-r2")

@@ -1,4 +1,4 @@
-package net.momirealms.customcrops.bukkit.j21;
+package net.momirealms.customcrops.bukkit.j25;
 
 import net.momirealms.customcrops.api.core.world.ExplosionIndicator;
 import org.bukkit.ExplosionResult;

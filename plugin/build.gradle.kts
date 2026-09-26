@@ -9,7 +9,7 @@ repositories {
 
 dependencies {
     // Platform
-    compileOnly("dev.folia:folia-api:${rootProject.properties["paper_version"]}-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:${rootProject.properties["paper_version"]}")
     // Some sub projects
     implementation(project(":api"))  {
         exclude("dev.dejvokep", "boosted-yaml")
@@ -25,7 +25,7 @@ dependencies {
     }
     implementation("net.kyori:adventure-text-serializer-legacy:${rootProject.properties["adventure_bundle_version"]}")
     implementation("net.momirealms:antigrieflib:${rootProject.properties["anti_grief_version"]}")
-    implementation("net.momirealms:sparrow-heart:${rootProject.properties["sparrow_heart_version"]}")
+    implementation("io.github.missdrop:sparrow-heart:${rootProject.properties["sparrow_heart_version"]}")
     implementation("com.saicone.rtag:rtag:${rootProject.properties["rtag_version"]}")
     implementation("com.saicone.rtag:rtag-item:${rootProject.properties["rtag_version"]}")
     // TODO use sparrow-nbt
@@ -48,7 +48,7 @@ tasks {
         from(zipTree(project(":compatibility-crucible-r1").tasks.jar.get().archiveFile))
         from(zipTree(project(":compatibility-craftengine-r1").tasks.jar.get().archiveFile))
         from(zipTree(project(":compatibility-craftengine-r2").tasks.jar.get().archiveFile))
-        from(zipTree(project(":plugin:j21").tasks.jar.get().archiveFile))
+        from(zipTree(project(":plugin:j25").tasks.jar.get().archiveFile))
         archiveFileName = "CustomCrops-${rootProject.properties["project_version"]}.jar"
         destinationDirectory.set(file("$rootDir/target"))
         relocate("net.kyori", "net.momirealms.customcrops.libraries")
@@ -69,15 +69,15 @@ artifacts {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(25)
     }
 }
 
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
-    options.release.set(21)
+    options.release.set(25)
     dependsOn(tasks.clean)
 }

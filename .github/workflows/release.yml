@@ -1,26 +1,9 @@
 name: Build and release
 
 on:
-  workflow_dispatch:
-    inputs:
-      tag:
-        description: "Release tag, for example v3.6.57"
-        required: true
-        type: string
-      release_name:
-        description: "Release title (defaults to the tag)"
-        required: false
-        type: string
-      prerelease:
-        description: "Mark as a pre-release"
-        required: true
-        default: false
-        type: boolean
-      draft:
-        description: "Create as a draft"
-        required: true
-        default: false
-        type: boolean
+  push:
+    tags:
+      - "v*"
 
 permissions:
   contents: write
@@ -62,14 +45,10 @@ jobs:
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
-          RELEASE_TAG: ${{ inputs.tag }}
-          RELEASE_NAME: ${{ inputs.release_name }}
-          PRERELEASE: ${{ inputs.prerelease }}
-          DRAFT: ${{ inputs.draft }}
+          RELEASE_TAG: ${{ github.ref_name }}
           ARTIFACT: ${{ steps.artifact.outputs.path }}
         run: |
-          title="${RELEASE_NAME:-$RELEASE_TAG}"
-          args=(release create "$RELEASE_TAG" "$ARTIFACT" --target "$GITHUB_SHA" --title "$title" --generate-notes)
-          [[ "$PRERELEASE" == "true" ]] && args+=(--prerelease)
-          [[ "$DRAFT" == "true" ]] && args+=(--draft)
-          gh "${args[@]}"
+          gh release create "$RELEASE_TAG" "$ARTIFACT" \
+            --verify-tag \
+            --title "$RELEASE_TAG" \
+            --generate-notes

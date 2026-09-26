@@ -43,6 +43,7 @@ jobs:
       - name: Build
         run: |
           chmod +x gradlew
+          git config user.name "github-actions[bot]"
           ./gradlew clean build
 
       - name: Locate release JAR

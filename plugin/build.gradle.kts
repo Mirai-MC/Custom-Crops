@@ -46,7 +46,6 @@ tasks {
         from(zipTree(project(":compatibility-itemsadder-r1").tasks.jar.get().archiveFile))
         from(zipTree(project(":compatibility-itemsadder-r2").tasks.jar.get().archiveFile))
         from(zipTree(project(":compatibility-crucible-r1").tasks.jar.get().archiveFile))
-        from(zipTree(project(":compatibility-craftengine-r1").tasks.jar.get().archiveFile))
         from(zipTree(project(":compatibility-craftengine-r2").tasks.jar.get().archiveFile))
         from(zipTree(project(":plugin:j25").tasks.jar.get().archiveFile))
         archiveFileName = "CustomCrops-${rootProject.properties["project_version"]}.jar"

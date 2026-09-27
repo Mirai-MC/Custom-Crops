@@ -26,8 +26,8 @@ dependencies {
     implementation("net.kyori:adventure-text-serializer-legacy:${rootProject.properties["adventure_bundle_version"]}")
     implementation("net.momirealms:antigrieflib:${rootProject.properties["anti_grief_version"]}")
     implementation("io.github.missdrop:sparrow-heart:${rootProject.properties["sparrow_heart_version"]}")
-    implementation("com.saicone.rtag:rtag:${rootProject.properties["rtag_version"]}")
-    implementation("com.saicone.rtag:rtag-item:${rootProject.properties["rtag_version"]}")
+    implementation("io.github.missdrop:rtag:${rootProject.properties["rtag_version"]}")
+    implementation("io.github.missdrop:rtag-item:${rootProject.properties["rtag_version"]}")
     // TODO use sparrow-nbt
     compileOnly(files("${rootProject.rootDir}/libs/flow-nbt-2.0.2.jar")) // do not relocate (compatibility with AdvancedSlimePaper)
     compileOnly("org.incendo:cloud-core:${rootProject.properties["cloud_core_version"]}")
